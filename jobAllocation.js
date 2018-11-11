@@ -1,4 +1,4 @@
-function getEffectiveness(fName) {
+const getEffectiveness = (fName) => {
     const fs = require('fs');
     let lines = fs.readFileSync(fName, "UTF8").split('\n');
     let arr = []
@@ -11,7 +11,7 @@ function getEffectiveness(fName) {
     return arr
 }
 
-function getAllIndexes(arr, val) {
+const getAllIndexes = (arr, val) => {
     let indexes = [], i
     for(i = 0; i < arr.length; i++)
         if (arr[i] == val)
@@ -19,7 +19,7 @@ function getAllIndexes(arr, val) {
     return indexes
 }
 
-function checkInitAssignment(arr) {
+const checkInitAssignment = (arr) => {
     let index, initAssign, min
     initAssign = new Array(arr.length)
     initAssign.fill([])
@@ -28,11 +28,20 @@ function checkInitAssignment(arr) {
         index = arr[i].indexOf(min)
         initAssign[i] = getAllIndexes(arr[i], min)
     }
-    if (initAssign.indexOf([]) > -1) { return false }
-    else { return initAssign }
+    return initAssign
 }
 
-let effectiveness, initAssign
+// function checkRepeat(effect, initAssign){
+//     let arr 
+//     arr = new Array(initAssign.length)
+//     arr.fill(-1)
+
+//     return arr
+// }
+
+let effectiveness, initAssign, assign
 effectiveness = getEffectiveness("input.txt")
 initAssign = checkInitAssignment(effectiveness)
-console.log(initAssign[0][0])
+console.log(initAssign)
+// assign = checkRepeat(effectiveness, initAssign)
+// console.log(assign)
