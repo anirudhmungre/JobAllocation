@@ -13,23 +13,20 @@ function getEffectiveness(fName) {
 
 function getAllIndexes(arr, val) {
     let indexes = [], i
-    // console.log(arr + "     " + val)
     for(i = 0; i < arr.length; i++)
         if (arr[i] == val)
             indexes.push(i)
     return indexes
 }
 
-function checkInitAssignment(effectiveness) {
-    let temp, index, initAssign, min
-    temp = effectiveness
-    initAssign = new Array(temp.length)
+function checkInitAssignment(arr) {
+    let index, initAssign, min
+    initAssign = new Array(arr.length)
     initAssign.fill([])
-    for (let i = 0; i < temp.length; i++) {
-        min = Math.min.apply(null, temp[i])
-        console.log(temp[i] + "      " + min)
-        index = temp[i].indexOf(min)
-        initAssign[i] = getAllIndexes(temp[i], min)
+    for (let i = 0; i < arr.length; i++) {
+        min = Math.min.apply(null, arr[i])
+        index = arr[i].indexOf(min)
+        initAssign[i] = getAllIndexes(arr[i], min)
     }
     if (initAssign.indexOf([]) > -1) { return false }
     else { return initAssign }
@@ -38,4 +35,4 @@ function checkInitAssignment(effectiveness) {
 let effectiveness, initAssign
 effectiveness = getEffectiveness("input.txt")
 initAssign = checkInitAssignment(effectiveness)
-console.log(initAssign)
+console.log(initAssign[0][0])
